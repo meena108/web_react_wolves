@@ -1,0 +1,14 @@
+.counter{
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+}
+
+.counter p{
+    margin-left: 1 rem;
+    margin-right: 1 rem;
+}
+.counter :no-button{
+    padding-left: 1 rem;
+    padding-right: 1 rem;
+}
