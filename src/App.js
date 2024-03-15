@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'; // Importing useEffect and useState hooks
+import './App.css'; // Importing the CSS file
 
 function App() {
+  // Using state to store the fetched data
+  const [fact, setFact] = useState('');
+  const [pulseInfo, setPulseInfo] = useState('');
+
+  useEffect(() => {
+    // Fetching the cat fact
+    fetch("https://catfact.ninja/fact")
+      .then((res) => res.json())
+      .then((data) => {
+        // Setting the fetched fact into the state
+        setFact(data.fact);
+      })
+      .catch((error) => {
+        console.error('Error fetching cat fact:', error);
+      });
+
+    // Setting the pulse information
+    setPulseInfo('Normal for cats: 110-170 beats per minute.');
+  }, []); // Empty dependency array to ensure useEffect only runs once
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Cat Fact</h1>
+      <p>{fact}</p>
+      <h2>Cat Pulse Information</h2>
+      <p>{pulseInfo}</p>
     </div>
   );
 }
