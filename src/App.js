@@ -1,34 +1,20 @@
-import React, { useEffect, useState } from 'react'; // Importing useEffect and useState hooks
-import './App.css'; // Importing the CSS file
+//checking how bootstrap works in react simple exmaple. First install the dependencies and secondary is run it
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 function App() {
-  // Using state to store the fetched data
-  const [fact, setFact] = useState('');
-  const [pulseInfo, setPulseInfo] = useState('');
-
-  useEffect(() => {
-    // Fetching the cat fact
-    fetch("https://catfact.ninja/fact")
-      .then((res) => res.json())
-      .then((data) => {
-        // Setting the fetched fact into the state
-        setFact(data.fact);
-      })
-      .catch((error) => {
-        console.error('Error fetching cat fact:', error);
-      });
-
-    // Setting the pulse information
-    setPulseInfo('Normal for cats: 110-170 beats per minute.');
-  }, []); // Empty dependency array to ensure useEffect only runs once
-
   return (
-    <div className="App">
-      <h1>Cat Fact</h1>
-      <p>{fact}</p>
-      <h2>Cat Pulse Information</h2>
-      <p>{pulseInfo}</p>
-    </div>
+    <Container>
+      <Row className="mt-5">
+        <Col>
+          <h1>Bootstrap Check</h1>
+          <p>Lets go ahead</p>
+          <Button variant="primary">Primary Button</Button>
+          <Button variant="secondary">Secondary Button</Button>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
